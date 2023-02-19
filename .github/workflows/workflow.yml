@@ -26,8 +26,8 @@ jobs:
       run: echo ::set-output name=tag::$(echo ${GITHUB_SHA:10})
     - name: Docker login
       env:
-        DOCKER_USERNAME: ${{ secrets.dockerhub_username }}
-        DOCKER_PASSWORD: ${{ secrets.dockerhub_password }}
+        DOCKER_USERNAME: ${{ secrets.docker_username }}
+        DOCKER_PASSWORD: ${{ secrets.docker_password }}
       run : docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" docker.io
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ${{secrets.docker_username}}/${{secrets.repo_name}}:${{steps.vars.outputs.tag}}
