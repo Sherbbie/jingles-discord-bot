@@ -15,4 +15,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'jingles-java-discord-bot'
+rootProject.name = 'jingles-discord-bot'

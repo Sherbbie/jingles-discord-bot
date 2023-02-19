@@ -11,10 +11,10 @@ public class Jingles {
     Map<String, String> environmentVariables = System.getenv();
 
     String token = environmentVariables.get("DISCORD_TOKEN");
-    String botName = environmentVariables.get("DISCORD_BOT_NAME");  
     
-    assert token != null;
-    assert botName != null;
+    if (token == null) {
+      throw new Exception("The DISCORD_TOKEN environment variable must contain a token.");
+    };
 
     try {
       JDA api = JDABuilder.createDefault(token).addEventListeners(new MessageListener()).build().awaitReady();
